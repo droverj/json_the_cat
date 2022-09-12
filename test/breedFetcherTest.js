@@ -7,7 +7,7 @@ describe('fetchBreedDescription', () => {
     fetchBreedDescription('Siberian', (err, desc) => {
       assert.equal(err, null);
 
-      const expectedDesc ="The Siberians dog like temperament and affection makes the ideal lap cat and will live quite happily indoors. Very agile and powerful, the Siberian cat can easily leap and reach high places, including the tops of refrigerators and even doors.";
+      const expectedDesc = "The Siberians dog like temperament and affection makes the ideal lap cat and will live quite happily indoors. Very agile and powerful, the Siberian cat can easily leap and reach high places, including the tops of refrigerators and even doors.";
 
       assert.equal(expectedDesc, desc.trim());
 
@@ -15,9 +15,14 @@ describe('fetchBreedDescription', () => {
     });
   });
 
-  it('returns should return null for an invalid breed', () => {
+  it('should print a "Breed not found" message for an invalid breed, via callback', (done) => {
     fetchBreedDescription('Siberiana', (err, desc) => {
-      assert.equal(desc, null);
-    })
-  })
+
+      desc = "Breed not found";
+
+      assert.equal(err, desc);
+
+      done();
+    });
+  });
 });
